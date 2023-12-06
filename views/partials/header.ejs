@@ -10,7 +10,7 @@
 <body>
   <nav>
     <a href="/meetings" <%- title === 'All Meetings' ? 'class="active"' : '' %>>ALL MEETINGS</a>
-    <% if (true) { %>
+    <% if (user) { %>
     <a href="/meetings/new" <%- title === 'Add Meetings' ? 'class="active"' : '' %>>ADD A MEETING</a>
     <a href="/logout">LOG OUT</a>
     <% } else { %>
