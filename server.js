@@ -12,6 +12,7 @@ require('./config/passport')
 
 const indexRouter = require('./routes/index');
 const meetingsRouter = require('./routes/meetings');
+const ensureLoggedIn = require('./config/ensureLoggedIn');
 
 var app = express();
 
@@ -31,13 +32,13 @@ app.use(session({
   saveUninitialized: true
 }))
 
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.use(function(req, res, next) { 
   res.locals.user = req.user
   next()
 })
-
-app.use(passport.initialize())
-app.use(passport.session())
 
 app.use('/', indexRouter);
 app.use('/meetings', meetingsRouter);
