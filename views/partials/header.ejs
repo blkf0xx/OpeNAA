@@ -10,6 +10,12 @@
 <body>
   <nav>
     <a href="/meetings" <%- title === 'All Meetings' ? 'class="active"' : '' %>>ALL MEETINGS</a>
+    <% if (true) { %>
+    <a href="/meetings/new" <%- title === 'Add Meetings' ? 'class="active"' : '' %>>ADD A MEETING</a>
+    <a href="/logout">LOG OUT</a>
+    <% } else { %>
+      <a href="/auth/google" class="login">SIGN IN</a>
+    <% } %>
   </nav>
   <main>
     <h1><%= title %></h1>
