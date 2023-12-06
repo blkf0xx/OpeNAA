@@ -9,5 +9,6 @@ const ensureLoggedIn = require('../config/ensureLoggedIn')
 
 router.get('/', meetingsCtrl.index)
 router.get('/new', meetingsCtrl.new)
+router.post('/', meetingsCtrl.create)
 
 module.exports = router;
