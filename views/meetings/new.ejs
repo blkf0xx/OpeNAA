@@ -1,51 +1,55 @@
 <%- include('../partials/header') %>
 
-<h2>meetings/new</h2>
+    <h2>meetings/new</h2>
 
-<form id="meeting-form" action="/meetings" method="POST">
-    <label>Meeting Name:</label>
-    <input type="text" name="mtgName" placeholder="Enter a meeting name">
+    <form id="meeting-form" action="/meetings" method="POST">
+        <label>Meeting Name:</label>
+        <input type="text" name="mtgName" placeholder="Enter a meeting name">
 
-    <label>Organization:</label>
-    <input type="text" name="organization" placeholder="NA / AA">
+        <label>Organization:</label>
+        <input type="text" name="organization" placeholder="NA / AA">
 
-    <label>Weekday:</label>
-    <select name="weekday">
-        <option>-- Select one --</option>
-        <option value="Monday">Monday</option>
-        <option value="Tuesday">Tuesday</option>
-        <option value="Wednesday">Wednesday</option>
-        <option value="Thursday">Thursday</option>
-        <option value="Friday">Friday</option>
-        <option value="Saturday">Saturday</option>
-        <option value="Sunday">Sunday</option>
-    </select>
+        <label>Weekday:</label>
+        <select name="weekday">
+            <option>-- Select one --</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
 
-    <label>Time:</label>
-    <input type="text" name="time" placeholder="8:00 PM">
+        <label>Time:</label>
+        <input type="text" name="time" placeholder="8:00 PM">
 
-    <label>Meeting Length:</label>
-    <input type="Number" name="length" placeholder="1">
+        <label>Meeting Length:</label>
+        <input type="Number" name="length" placeholder="1">
 
-    <label>Format:</label>
-    <select name="format">
-        <option>-- Select one --</option>
-        <option value="In Person">In Person</option>
-        <option value="Online Only">Online Only</option>
-        <option value="Hybrid">Hybrid</option>
-    </select>
+        <label for="format">Format:</label>
+        <select id="format" name="format">
+            <option>-- Select one --</option>
+            <option value="In Person">In Person</option>
+            <option value="Online Only">Online Only</option>
+            <option value="Hybrid">Hybrid</option>
+        </select>
 
-    <label>Meeting URL:</label>
-    <input type="text" name="link" placeholder="Zoom Link">
+        <div id="dependent-inputs">
+            <label>Meeting URL:</label>
+            <input type="text" name="link" placeholder="Zoom Link">
 
-    <label>Meeting ID:</label>
-    <input type="text" name="mtgId">
+            <label>Meeting ID:</label>
+            <input type="text" name="mtgId">
 
-    <label>Meeting Passcode:</label>
-    <input type="text" name="mtgPasscode">
-    
-    <label>Meeting Location:</label>
-    <input type="text" name="location">
-</form>
+            <label>Meeting Passcode:</label>
+            <input type="text" name="mtgPasscode">
+        </div>
+<div id="location">
+        <label>Meeting Location:</label>
+        <input type="text" name="location">
+</div>
+        <input type="submit" name="submit">
+    </form>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
