@@ -9,7 +9,8 @@
 </head>
 <body>
   <nav>
-    <a href="/" <%- title === 'All Meetings' ? 'class="active"' : '' %>>ALL MEETINGS</a>
+    <a href="/" <%- title === 'Home' ? 'class="active"' : '' %>>HOME</a>
+    <a href="/meetings" <%- title === 'All Meetings' ? 'class="active"' : '' %>>ALL MEETINGS</a>
     <% if (user) { %>
     <a href="/meetings/new" <%- title === 'Add Meetings' ? 'class="active"' : '' %>>ADD A MEETING</a>
     <a href="/logout">LOG OUT</a>
