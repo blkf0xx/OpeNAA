@@ -71,3 +71,15 @@ body {
 .row-sub-container .row-item:last-child {
   border-bottom: 0;
 }
+
+#meeting-form {
+  display:block;
+}
+
+#dependent-inputs {
+  display: none;
+}
+
+#location {
+  display:none;
+}
