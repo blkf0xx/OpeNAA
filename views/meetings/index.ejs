@@ -2,4 +2,23 @@
 
 <h2>/views/meetings/index</h2>
 
+<div class="main-container">
+    <div class="table-container">
+        <div class="table-row heading">
+            <div class="row-item">Time</div>
+            <div class="row-item">Weekday</div>
+            <div class="row-item">Meeting</div>
+            <div class="row-item">Location</div>
+        </div> <!-- row 1 end -->
+        <% meetings.forEach(m => { %> 
+        <div class="table-row">
+            <div class="row-item"><%= m.time %></div>
+            <div class="row-item"><%= m.weekday %></div>
+            <div class="row-item"><%= m.mtgName %></div>
+            <div class="row-item"><%= m.address %></div>
+        </div> <!-- row 2 end -->
+        <% }) %>
+    </div> <!-- table container end -->
+</div> <!--main continer end -->
+
 <%- include('./partials/footer') %>
