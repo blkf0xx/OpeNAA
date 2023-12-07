@@ -1,4 +1,5 @@
 const Meeting = require('../models/meeting')
+const User = require('../models/user')
 
 module.exports = {
     index,
@@ -22,13 +23,14 @@ async function newMeeting(req, res) {
 }
 
 async function create(req, res) {
-    const meeting = new Meeting(req.body)
-
     try {
-        await meeting.save()
-        res.redirect(`/meetings/${meeting._id}`)
+        const meeting = await Meeting.create({
+            ...req.body,
+            userMtg: req.user
+        });
+        res.redirect(`/meetings/${meeting._id}`);
     } catch(err) {
-        console.log(err.message)
-        res.redirect('/meetings/new')
+        console.log(err.message);
+        res.redirect('/meetings/new');
     }
 }
