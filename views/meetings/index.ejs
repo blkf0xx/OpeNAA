@@ -5,20 +5,27 @@
 <div class="main-container">
     <div class="table-container">
         <div class="table-row heading">
-            <div class="row-item">Time</div>
-            <div class="row-item">Weekday</div>
+            <div class="row-item">Day/Time</div>
             <div class="row-item">Meeting</div>
+            <div class="row-item">Format</div>
             <div class="row-item">Location</div>
-        </div> <!-- row 1 end -->
+            <div class="row-item">Meeting Link</div>
+        </div> 
         <% meetings.forEach(m => { %> 
-        <div class="table-row">
-            <div class="row-item"><%= m.time %></div>
-            <div class="row-item"><%= m.weekday %></div>
-            <div class="row-item"><a href="/meetings/<%= m._id %>"><%= m.mtgName %></a></div>
-            <div class="row-item"><a href="https://www.google.com/maps?q=<%= m.address %>" target="_blank"><%= m.address %></a></div>
-        </div> <!-- row 2 end -->
-        <% }) %>
-    </div> <!-- table container end -->
-</div> <!--main continer end -->
+            <div class="table-row">
+              <div class="row-item"><%= m.time %>&nbsp;<%= m.weekday %></div>
+              <div class="row-item"><a href="/meetings/<%= m._id %>"><%= m.mtgName %></a></div>
+              <div class="row-item"><%= m.format %></div>
+              <div class="row-item"><a href="https://www.google.com/maps?q=<%= m.address %>" target="_blank"><%= m.address %></a></div>
+              <div class="row-item zoom-link">
+                <% if (m.link && /^https?:\/\/\S+$/.test(m.link)) { %>
+                  <a href="<%= m.link %>" target="_blank">Zoom</a>
+                <% } %>
+              </div>
+            </div> 
+          <% }) %>
+          
+    </div> 
+</div> 
 
 <%- include('../partials/footer') %>

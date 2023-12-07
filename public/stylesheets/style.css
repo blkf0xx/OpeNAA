@@ -13,7 +13,6 @@ body {
   margin: 0;
   justify-content: center;
   align-items: center;
-  background-color: #fafafa;
 }
 
 .table-container {
@@ -53,7 +52,7 @@ body {
 .row-item:hover {
   cursor: pointer;
   background-color: #F0F0F0;
-/*   box-shadow: 0px 1px 4px rgba(0, 0, 0, .08); */
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, .08);
 }
 
 .row-sub-container {
