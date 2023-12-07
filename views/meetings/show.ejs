@@ -19,16 +19,17 @@
     <div><%= meetings.length %></div>
 
     <div>Format:</div>
-    <div><%= meetings.format %></div>
+    <div id="mtg-format"><%= meetings.format %></div>
+    <div id="zoom-info">
+        <div>URL:</div>
+        <div><%= meetings.link %></div>
 
-    <div>URL:</div>
-    <div><%= meetings.link %></div>
+        <div>Meeting ID:</div>
+        <div><%= meetings.mtgId %></div>
 
-    <div>Meeting ID:</div>
-    <div><%= meetings.mtgId %></div>
-
-    <div>Meeting Passcode:</div>
-    <div><%= meetings.mtgPasscode %></div>
+        <div>Meeting Passcode:</div>
+        <div><%= meetings.mtgPasscode %></div>
+    </div>
 </section>
 
 <%- include('../partials/footer') %>
