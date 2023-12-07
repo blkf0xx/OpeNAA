@@ -3,13 +3,9 @@ var router = express.Router();
 const meetingsCtrl = require('../controllers/meetings')
 const ensureLoggedIn = require('../config/ensureLoggedIn')
 
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
-
 router.get('/', meetingsCtrl.index)
-router.get('/new', meetingsCtrl.new)
+router.get('/new', ensureLoggedIn, meetingsCtrl.new)
 router.get('/:id', meetingsCtrl.show)
-router.post('/', meetingsCtrl.create)
+router.post('/', ensureLoggedIn, meetingsCtrl.create)
 
 module.exports = router;
