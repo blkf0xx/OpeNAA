@@ -3,21 +3,14 @@ const Schema = mongoose.Schema
 
 const commentSchema = new Schema({
     content: { type: String, required: true },
-    rating: { type: Number, min: 1, max: 5, default: 5 },
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    userName: String,
     userAvatar: String
   }, {
     timestamps: true
   })
 
-
 const meetingSchema = new Schema({
-  userMtg: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-    // required: true
-  },
+  userMtg: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   mtgName: String,
   organization: { type: String, enum: ['AA', 'NA'] },
   weekday: { type: String, enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] },
