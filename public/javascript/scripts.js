@@ -1,13 +1,18 @@
-function handleFormatChange() {
-    const formatValue = document.getElementById('format').value
-    const dependentInputs = document.getElementById('dependent-inputs')
-    const location = document.getElementById('location')
-  
-    dependentInputs.style.display = formatValue === 'Hybrid' || formatValue === 'Online Only' ? 'block' : 'none'
-    location.style.display = formatValue === 'In Person' ? 'block' : 'none'
+// function to show or hide meeting info on /meetings/:id
+function showFields() {
+  const zoomInfoDiv = document.getElementById('zoom-info')
+  const mtgFormatDiv = document.getElementById('mtg-format').innerText.trim()
+  console.log(mtgFormatDiv)
+  if (mtgFormatDiv === 'In Person') {
+    zoomInfoDiv.style.display = 'none'
+  }  else {
+    zoomInfoDiv.style.display = 'block'
   }
-  
-  document.getElementById('format').addEventListener('change', handleFormatChange)
+}
+
+showFields()
+
+
   
 
 
