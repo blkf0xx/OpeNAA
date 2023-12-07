@@ -27,24 +27,16 @@ const commentSchema = new Schema({
 const meetingSchema = new Schema({
   userMtg: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   },
   mtgName: String,
-  organization: { 
-    type: String, 
-    enum: ['AA', 'NA'] 
-  },
-  weekday: { 
-   type: String, 
-    enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] 
-  },
+  organization: { type: String, enum: ['AA', 'NA'] },
+  weekday: { type: String, enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] },
   time: String,
-  length: String,
+  length: Number,
   description: String,
-  format: { 
-    type: String, 
-    enum: ['In Person', 'Online Only', 'Hybrid'] 
-  },
+  format: { type: String, enum: ['In Person', 'Online Only', 'Hybrid'] },
   link: String,
   mtgId: String,
   mtgPasscode: String,
