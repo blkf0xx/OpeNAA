@@ -14,8 +14,8 @@
         <div class="table-row">
             <div class="row-item"><%= m.time %></div>
             <div class="row-item"><%= m.weekday %></div>
-            <div class="row-item"><%= m.mtgName %></div>
-            <div class="row-item"><%= m.address %></div>
+            <div class="row-item"><a href="/meetings/<%= m._id %>"><%= m.mtgName %></a></div>
+            <div class="row-item"><a href="https://www.google.com/maps?q=<%= m.address %>" target="_blank"><%= m.address %></a></div>
         </div> <!-- row 2 end -->
         <% }) %>
     </div> <!-- table container end -->
