@@ -2,6 +2,7 @@ const Meeting = require('../models/meeting')
 
 module.exports = {
     index,
+    show,
     new: newMeeting,
     create
 }
@@ -9,6 +10,11 @@ module.exports = {
 async function index(req, res) {
     const meetings = await Meeting.find({})
     res.render('meetings/index', { title: 'All Meetings', meetings} )
+}
+
+async function show(req, res) {
+    const meetings = await Meeting.findById(req.params.id)
+    res.render('meetings/show', { title: 'Meeting Info' , meetings} )
 }
 
 async function newMeeting(req, res) {
