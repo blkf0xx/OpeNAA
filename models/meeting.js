@@ -15,8 +15,8 @@ const commentSchema = new Schema({
 const meetingSchema = new Schema({
   userMtg: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+    ref: 'User'
+    // required: true
   },
   mtgName: String,
   organization: { type: String, enum: ['AA', 'NA'] },
@@ -25,7 +25,7 @@ const meetingSchema = new Schema({
   length: Number,
   description: String,
   format: { type: String, enum: ['In Person', 'Online Only', 'Hybrid'] },
-  link: String,
+  link: { type: String, trim: true},
   mtgId: String,
   mtgPasscode: String,
   address: String,
@@ -34,7 +34,16 @@ const meetingSchema = new Schema({
   //   ref: 'Attending'
   // },
   comments: [commentSchema]
-}, {timestamps: true
+}, { timestamps: true
+})
+
+ // Trim leading and trailing whitespaces
+meetingSchema.pre('save', (next) => {
+  if (this.link) {
+    this.link = this.link.trim()
+  }
+  next()
 })
 
 module.exports = mongoose.model('meeting', meetingSchema)
+
