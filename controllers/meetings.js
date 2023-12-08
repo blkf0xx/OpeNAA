@@ -28,9 +28,9 @@ async function create(req, res) {
             ...req.body,
             userMtg: req.user
         });
-        res.redirect(`/meetings/${meeting._id}`);
+        res.redirect(`/meetings/${meeting._id}`)
     } catch(err) {
-        console.log(err.message);
-        res.redirect('/meetings/new');
+        console.log(err.message)
+        res.redirect('/meetings/new')
     }
 }
