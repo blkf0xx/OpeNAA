@@ -1,6 +1,5 @@
 <%- include('../partials/header') %>
 
-<h2>meetings/show</h2>
 <a href="/meetings">Back to meetings</a>
 <section id="meeting-info">
     <div>Meeting:</div>
@@ -18,9 +17,11 @@
     <div>Length:</div>
     <div><%= meetings.length %>h</div>
     
-
     <div>Format:</div>
     <div id="mtg-format"><%= meetings.format %></div>
+
+    <div>Location:</div>
+    <div id="meeting-location"><%= meetings.address %></div>
     
     <div id="zoom-info">
         <div>URL:</div>
@@ -32,11 +33,17 @@
         <div>Meeting Passcode:</div>
         <div><%= meetings.mtgPasscode %></div>
     </div>
+
+    <% if (currentUser && meetings && currentUser._id.toString() === meetings.userMtg.toString()) { %>
+    <a href="/meetings/<%= meetings._id %>/edit"><button id="update-meeting-btn">Update Meeting</button></a>
+    <form id="remove-mtg-form" action="/meetings/<%= meetings._id %>?_method=DELETE" method="POST">
+        <button id="remove-mtg-btn" type="submit">Remove Meeting</button>
+    </form>
+ 
 </section>
 
 <section>
-    <h2>Comments</h2>
-    <% if (user) { %>
+   
     <form id="comment-form" method="POST" action="/meetings/<%= meetings._id %>/comments">
         <label>Comment:</label>
         <textarea name="content"></textarea> 
@@ -47,10 +54,18 @@
 <section>
     <% if (meetings.comments.length) { %>
         <div>Comments:</div>
-        <% meetings.comments.forEach(c=> { %>
-            <div><img alt="User Avatar" src="<%= c.avatar %>"><%= c.name %></div>
-            <div>c.createdAt.toLocaleDateString() %></div>
+        <% meetings.comments.forEach(c => { %>
+            <div>Comment Date: <%= c.createdAt.toLocaleDateString() %></div>
+            <div><img alt="User Avatar" src="<%= c.avatar %>"></div>
+            <div><%= c.name %></div>
             <div><%= c.content %></div>
+            <div>
+                <% if (user?._id.equals(c.user)) { %>
+                    <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                        <button id="delete-comment" type="submit">X</button>
+                    </form>
+                <% } %>    
+            </div>
          <% }) %>
      <% } else { %>
         <h5>Be the first to comment!</h5>
