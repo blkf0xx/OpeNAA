@@ -1,7 +1,8 @@
 const Meeting = require('../models/meeting')
 
 module.exports = {
-    create
+    create,
+    delete:deleteComment
 }
 
 async function create(req, res) {
@@ -15,6 +16,7 @@ async function create(req, res) {
         const displayName = lastInitial ? `${firstName} ${lastInitial}.` : firstName
 
         meeting.comments.push({
+            user: req.user._id,
             content: req.body.content,
             name: displayName,
             avatar: req.user.avatar
@@ -26,5 +28,13 @@ async function create(req, res) {
         console.log(err)
         res.redirect(`/meetings/${meeting._id}`)
     }
+}
+
+async function deleteComment(req, res) {
+    const meeting = await Meeting.findOne({ 'comments._id': req.params.id, 'comments.user': req.user._id })
+    if (!meeting) return res.redirect(`/meetings/${meeting._id}`)
+    meeting.comments.remove(req.params.id)
+    await meeting.save()
+    res.redirect(`/meetings/${meeting._id}`)
 }
 
