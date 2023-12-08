@@ -1,5 +1,5 @@
-document.getElementById('format').addEventListener('change', handleFormatChange)
 document.addEventListener('DOMContentLoaded', showFields)
+document.getElementById('format').addEventListener('change', handleFormatChange)
 
 // function to show or hide form elements based on selected options on /meetings/new
 function handleFormatChange() {
