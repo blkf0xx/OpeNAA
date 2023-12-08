@@ -16,13 +16,15 @@
     <div><%= meetings.time %></div>
     
     <div>Length:</div>
-    <div><%= meetings.length %></div>
+    <div><%= meetings.length %>h</div>
+    
 
     <div>Format:</div>
     <div id="mtg-format"><%= meetings.format %></div>
+    
     <div id="zoom-info">
         <div>URL:</div>
-        <div><%= meetings.link %></div>
+        <div><a href="<%= meetings.link %>">Zoom Link</a></div>
 
         <div>Meeting ID:</div>
         <div><%= meetings.mtgId %></div>
@@ -41,6 +43,18 @@
         <input type="submit" value="Comment">
     </form>
     <% } %>
+</section>
+<section>
+    <% if (meetings.comments.length) { %>
+        <div>Comments:</div>
+        <% meetings.comments.forEach(c=> { %>
+            <div><img alt="User Avatar" src="<%= c.avatar %>"><%= c.name %></div>
+            <div>c.createdAt.toLocaleDateString() %></div>
+            <div><%= c.content %></div>
+         <% }) %>
+     <% } else { %>
+        <h5>Be the first to comment!</h5>
+        <% } %>
 </section>
 
 <%- include('../partials/footer') %>
