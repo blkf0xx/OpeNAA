@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const commentSchema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
   content: { type: String, required: true },
   name: String,
   avatar: String
@@ -21,14 +22,12 @@ const meetingSchema = new Schema({
   mtgId: String,
   mtgPasscode: String,
   address: String,
-  // userAttends: {
+  // userAttends: [{
   //   type: Schema.Types.ObjectId,
   //   ref: 'Attending'
-  // },
+  // }],
   comments: [commentSchema]
-}, { timestamps: true
-})
-
+}, { timestamps: true })
 
 module.exports = mongoose.model('meeting', meetingSchema)
 
