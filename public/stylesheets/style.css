@@ -1,11 +1,41 @@
 body {
-  position: absolute;
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Helvetica';
 }
+
+nav {
+  background-color: rgb(30, 2, 61);
+  height:50px;
+  display:flex;
+  margin-bottom:80px;
+  justify-content:center;
+  align-items: center;
+  box-shadow: 2px 2px 4px #ccc;
+}
+
+nav a {
+  padding:5px;
+  margin:10px;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: rgba(255,255,255,1);
+  text-decoration: none;
+}
+
+.active {
+  color:rgba(255,255,255,1)
+}
+
+.logout {
+
+}
+
 .main-container {
   width: 100%;
   height: 100%;
@@ -22,7 +52,7 @@ body {
   width: 80%;
   margin: 0 auto;
   border-radius: 4px;
-  border: 1px solid #DADADA;
+  border: 1px solid #dadada;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, .08);
 }
 
@@ -55,24 +85,17 @@ body {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, .08);
 }
 
-.row-sub-container {
-  display: flex;
-  flex-flow: column nowrap;
-  flex: 1;
-}
-
-.row-sub-container .row-item {
+.row-item {
   padding: 8px 0;
   border-bottom: 1px solid #dadada;
 }
 
 .table-row:last-child,
-.row-sub-container .row-item:last-child {
+.row-item:last-child {
   border-bottom: 0;
 }
 
 /* FORM STYLES */
-
 form {
   display: flex;
   flex-direction: column;
@@ -81,20 +104,14 @@ form {
 }
 
 label {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 input, select {
   padding: 5px;
-  margin-bottom: 20px;
-}
-
-button {
-  padding: 8px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+  margin:5px 0px 20px 0px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 #meeting-form {
@@ -108,3 +125,14 @@ button {
 #location {
   display:none;
 }
+
+/* BUTTONS */
+
+button {
+  padding: 8px;
+  background-color: rgb(30, 2, 61);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
