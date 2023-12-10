@@ -1,16 +1,16 @@
 <%- include('../partials/header') %>
 <h3>Update a Meeting</h3>
 <% if (user?._id) { %>
-<form id="update-meeting-form" action="/meetings/<%= meeting._id %>?_method=PUT" method="POST">
+<form id="update-meeting-form" action="/meetings/<%= meetings._id %>?_method=PUT" method="POST">
 
         <label>Meeting Name:</label>
-        <input type="text" name="mtgName" value="<%= meeting.mtgName %>">
+        <input type="text" name="mtgName" value="<%= meetings.mtgName %>">
 
         <label>Organization:</label>
-        <input type="text" name="organization" value="<%= meeting.organization %>">
+        <input type="text" name="organization" value="<%= meetings.organization %>">
 
         <label>Weekday:</label>
-        <select name="weekday" value="<%= meeting.weekday %>">
+        <select name="weekday" value="<%= meetings.weekday %>">
             <!-- <option>-- Select one --</option> -->
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
@@ -22,10 +22,10 @@
         </select>
         
         <label>Time:</label>
-        <input type="time" name="time" value="<%= meeting.time %>">
+        <input type="time" name="time" value="<%= meetings.time %>">
        
         <label>Meeting Length:</label>
-        <input type="Number" name="length" value="<%= meeting.length %>">
+        <input type="Number" name="length" value="<%= meetings.length %>">
 
         <label for="format">Format:</label>
         <select id="format" name="format">
@@ -37,17 +37,17 @@
 
         <div id="dependent-inputs">
             <label>Meeting URL:</label>
-            <input type="text" name="link" value="<%= meeting.link %>">
+            <input type="text" name="link" value="<%= meetings.link %>">
 
             <label>Meeting ID:</label>
-            <input type="text" name="mtgId" value="<%= meeting.mtgId %>">
+            <input type="text" name="mtgId" value="<%= meetings.mtgId %>">
 
             <label>Meeting Passcode:</label>
-            <input type="text" name="mtgPasscode" value="<%= meeting.mtgPasscode %>">
+            <input type="text" name="mtgPasscode" value="<%= meetings.mtgPasscode %>">
         </div>
         <div id="location">
             <label>Meeting Location:</label>
-            <input type="text" name="address" value="<%= meeting.address %>">
+            <input type="text" name="address" value="<%= meetings.address %>">
         </div>
       
         <input type="submit" name="submit">
