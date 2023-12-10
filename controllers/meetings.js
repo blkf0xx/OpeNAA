@@ -59,7 +59,7 @@ async function update(req, res) {
 
 async function deleteMtg(req, res) {
     try {
-        const deletedMeeting = await Meeting.findOneAndDelete( { _id: req.params.id, userMtg: req.user.id } )
+        const deletedMeeting = await Meeting.findOneAndDelete( { _id: req.params.id } )
         if (!deletedMeeting) {
             console.log('Meeting not found')
             return res.redirect('/meetings')
