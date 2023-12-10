@@ -40,13 +40,13 @@ async function create(req, res) {
 
 async function edit(req, res) {
     const meeting = await Meeting.findById(req.params.id)
-    res.render('meetings/edit', { title: 'Update Meeting', meeting} )
+    res.render('meetings/show', { title: 'Update Meeting', meeting} )
 }
 
 async function update(req, res) {
     try {
         const updatedMtg = await Meeting.findOneAndUpdate(
-            { _id: req.params.id, userMtg: req.user.id },
+            { _id: req.params.id },
             req.body,
             { new:true }
         )
