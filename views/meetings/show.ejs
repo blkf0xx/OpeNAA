@@ -1,74 +1,68 @@
 <%- include('../partials/header') %>
-
-<a href="/meetings">Back to meetings</a>
+<div class="show-details-map-container">
 <section id="meeting-info">
-    <div>Meeting:</div>
-    <div><%= meetings.mtgName %></div>
-    
-    <div>Organization:</div>
-    <div><%= meetings.organization %></div>
-    
-    <div>Weekday:</div>
-    <div><%= meetings.weekday %></div>
-
-    <div>Time:</div>
-    <div><%= meetings.time %></div>
-    
-    <div>Length:</div>
-    <div><%= meetings.length %>h</div>
-    
-    <div>Format:</div>
-    <div id="mtg-format"><%= meetings.format %></div>
-
-    <div>Location:</div>
-    <div id="meeting-location"><%= meetings.address %></div>
-    
+    <a href="/meetings"><< Back to meetings</a>
+    <h2><%= meetings.mtgName %></h2>
+    <!-- <div>Meeting Name: <%= meetings.mtgName %></div>    -->
+    <div><span class="grey-text">Organization:</span> <%= meetings.organization %></div>   
+    <div><span class="grey-text">Weekday:</span> <%= meetings.weekday %></div>
+    <div><span class="grey-text">Time:</span> <%= meetings.time %></div>  
+    <div><span class="grey-text">Length:</span> <%= meetings.length %>h</div> 
+    <div id="mtg-format"><span class="grey-text">Format:</span> <%= meetings.format %></div>
+    <div id="meeting-location"><span class="grey-text">Location:</span> <%= meetings.address %></div>
     <div id="zoom-info">
-        <div>URL:</div>
-        <div><a href="<%= meetings.link %>">Zoom Link</a></div>
-
-        <div>Meeting ID:</div>
-        <div><%= meetings.mtgId %></div>
-
-        <div>Meeting Passcode:</div>
-        <div><%= meetings.mtgPasscode %></div>
+        <div><span class="grey-text">URL:</span> <a href="<%= meetings.link %>">Zoom Link</a></div>
+        <div><span class="grey-text">Meeting ID:</span> <%= meetings.mtgId %></div>
+        <div><span class="grey-text">Meeting Passcode:</span> <%= meetings.mtgPasscode %></div>
     </div>
 
-    <% if (currentUser && meetings && currentUser._id.toString() === meetings.userMtg.toString()) { %>
+    <% if (user) { %>
     <a href="/meetings/<%= meetings._id %>/edit"><button id="update-meeting-btn">Update Meeting</button></a>
     <form id="remove-mtg-form" action="/meetings/<%= meetings._id %>?_method=DELETE" method="POST">
         <button id="remove-mtg-btn" type="submit">Remove Meeting</button>
     </form>
- 
-</section>
-
-<section>
-   
-    <form id="comment-form" method="POST" action="/meetings/<%= meetings._id %>/comments">
-        <label>Comment:</label>
-        <textarea name="content"></textarea> 
-        <input type="submit" value="Comment">
-    </form>
     <% } %>
 </section>
-<section>
+
+<section id="map">
+    <iframe
+  width="600"
+  height="430"
+  frameborder="0" style="border:0"
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCO0Prya2KV8-B8-A3X1h_68WbS1atHKkM&q=<%= meetings.address %>>"
+  allowfullscreen>
+</iframe>
+</section>
+</div>
+<section  id="comments-section">
+<!-- </section>
+<section> -->
+<div id="comment-wrapper">
     <% if (meetings.comments.length) { %>
-        <div>Comments:</div>
-        <% meetings.comments.forEach(c => { %>
-            <div>Comment Date: <%= c.createdAt.toLocaleDateString() %></div>
-            <div><img alt="User Avatar" src="<%= c.avatar %>"></div>
-            <div><%= c.name %></div>
-            <div><%= c.content %></div>
-            <div>
-                <% if (user?._id.equals(c.user)) { %>
-                    <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
-                        <button id="delete-comment" type="submit">X</button>
-                    </form>
-                <% } %>    
-            </div>
-         <% }) %>
-     <% } else { %>
-        <h5>Be the first to comment!</h5>
+        <% meetings.comments.forEach(c=> { %>
+            <div class="avatar"><img alt="User Avatar" src="<%= c.avatar %>"></div>
+            <ul>
+                <div><%= c.createdAt.toLocaleDateString() %></div>
+                <div><%= c.name %></div>
+                <div><%= c.content %></div>
+                <div>
+                    <% if (user?._id.equals(c.user)) { %>
+                        <form class="delete-comment-form" action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                            <button class="delete-comment-btn" type="submit">x</button>
+                        </form>
+                        <% } %>
+                </div>
+            </ul>
+            <% }) %>
+</div>
+<% } %>
+    <% if (user) { %>
+        <form id="comment-form" method="POST" action="/meetings/<%= meetings._id %>/comments">
+            <label>Leave a Comment:</label>
+            <textarea name="content"></textarea>
+            <input type="submit" value="Comment">
+        </form>
         <% } %>
 </section>
 

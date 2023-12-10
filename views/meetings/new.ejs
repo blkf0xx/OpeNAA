@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<h3>Add a New Meeting</h3>
     <form id="meeting-form" action="/meetings" method="POST">
         <label>Meeting Name:</label>
         <input type="text" name="mtgName" placeholder="Enter a meeting name">
@@ -18,10 +18,10 @@
             <option value="Saturday">Saturday</option>
             <option value="Sunday">Sunday</option>
         </select>
-        <br>
+     
         <label>Time:</label>
         <input type="time" name="time">
-        <br>
+      
         <label>Meeting Length:</label>
         <input type="Number" name="length" placeholder="1">
 
@@ -47,8 +47,8 @@
             <label>Meeting Location:</label>
             <input type="text" name="address">
         </div>
-        <br>
-        <input type="submit" name="submit">
+       
+        <input type="submit" name="submit" id="new-mtg-form-btn">
     </form>
 
     <%- include('../partials/footer') %>

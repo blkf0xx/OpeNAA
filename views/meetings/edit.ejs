@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
-
+<h3>Update a Meeting</h3>
 <% if (user?._id) { %>
-<form id="update-meeting" action="/meetings/<%= meeting._id %>?_method=PUT" method="POST">
+<form id="update-meeting-form" action="/meetings/<%= meeting._id %>?_method=PUT" method="POST">
 
         <label>Meeting Name:</label>
         <input type="text" name="mtgName" value="<%= meeting.mtgName %>">
@@ -20,16 +20,16 @@
             <option value="Saturday">Saturday</option>
             <option value="Sunday">Sunday</option>
         </select>
-        <br>
+        
         <label>Time:</label>
         <input type="time" name="time" value="<%= meeting.time %>">
-        <br>
+       
         <label>Meeting Length:</label>
         <input type="Number" name="length" value="<%= meeting.length %>">
 
         <label for="format">Format:</label>
-        <select id="format" name="format" value="<%= meeting.format %>">
-            <!-- <option>-- Select one --</option> -->
+        <select id="format" name="format">
+            <option>-- Select one --</option>
             <option value="In Person">In Person</option>
             <option value="Online Only">Online Only</option>
             <option value="Hybrid">Hybrid</option>
@@ -43,13 +43,13 @@
             <input type="text" name="mtgId" value="<%= meeting.mtgId %>">
 
             <label>Meeting Passcode:</label>
-            <input type="text" name="mtgPasscode" value="<%= meeting.passcode %>">
+            <input type="text" name="mtgPasscode" value="<%= meeting.mtgPasscode %>">
         </div>
         <div id="location">
             <label>Meeting Location:</label>
             <input type="text" name="address" value="<%= meeting.address %>">
         </div>
-        <br>
+      
         <input type="submit" name="submit">
     </form>
 <% } %>
