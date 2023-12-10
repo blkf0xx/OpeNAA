@@ -40,7 +40,7 @@ async function create(req, res) {
 
 async function edit(req, res) {
     const meetings = await Meeting.findById(req.params.id)
-    res.render('meetings/show', { title: 'Update Meeting', meetings} )
+    res.render('meetings/edit', { title: 'Update Meeting', meetings} )
 }
 
 async function update(req, res) {
