@@ -6,35 +6,44 @@ body {
   font-family: 'Helvetica';
 }
 
+h3 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+a {
+  color:rgb(30, 2, 61);
+}
+
+/* NAVIGATION */
+
 nav {
   background-color: rgb(30, 2, 61);
-  height:50px;
-  display:flex;
-  margin-bottom:80px;
-  justify-content:center;
+  height: 50px;
+  display: flex;
+  margin-bottom: 60px;
+  justify-content: center;
   align-items: center;
   box-shadow: 2px 2px 4px #ccc;
 }
 
 nav a {
-  padding:5px;
-  margin:10px;
-  color: rgba(255,255,255,0.5);
+  padding: 5px;
+  margin: 10px;
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
 }
 
 nav a:hover {
-  color: rgba(255,255,255,1);
+  color: rgba(255, 255, 255, 1);
   text-decoration: none;
 }
 
 .active {
-  color:rgba(255,255,255,1)
+  color: rgba(255, 255, 255, 1)
 }
 
-.logout {
-
-}
+/* /meetings/index STYLES */
 
 .main-container {
   width: 100%;
@@ -80,42 +89,41 @@ nav a:hover {
 }
 
 .row-item:hover {
-  cursor: pointer;
   background-color: #F0F0F0;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, .08);
 }
 
-.row-item {
-  padding: 8px 0;
-  border-bottom: 1px solid #dadada;
-}
-
-.table-row:last-child,
-.row-item:last-child {
-  border-bottom: 0;
-}
-
 /* FORM STYLES */
+
 form {
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 label {
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 
-input, select {
+input,
+select {
   padding: 5px;
-  margin:5px 0px 20px 0px;
+  margin: 5px 0px 20px 0px;
   box-sizing: border-box;
   width: 100%;
 }
 
-#meeting-form {
-  display:block;
+textarea {
+  height: 40px;
+}
+
+#meeting-form,
+#update-meeting-form {
+  display: block;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
 }
 
 #dependent-inputs {
@@ -123,7 +131,78 @@ input, select {
 }
 
 #location {
-  display:none;
+  display: none;
+}
+
+/* SHOW PAGE STYLES */
+
+.show-details-map-container {
+  display: flex;
+  justify-content: center;
+}
+
+#map {
+  margin-top: 50px;
+  margin-left: 5vmin;
+}
+
+#meeting-info {
+  margin: 5vmin;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#meeting-info * {
+  margin-bottom: 10px;
+}
+
+#update-meeting-btn {
+  width: 100%;
+  margin: 10px 0 0 0;
+}
+
+#comments-section {
+  width: 69%;
+  border-top: 1px solid grey;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.grey-text {
+  color: rgba(0, 0, 0, 0.7)
+}
+
+/* COMMENTS */
+
+#comment-wrapper {
+  text-align: left;
+  display: flex;
+  position: absolute;
+  font-size: 14px;
+}
+
+ul {
+  margin:0 0 0 10px;
+  padding:0;
+}
+
+.avatar>img {
+  border-radius: 50%;
+  height: 50px;
+}
+
+.delete-comment-form {
+  display: inline;
+}
+
+.delete-comment-btn {
+  width: 12px;
+  height: 13px;
+  padding: 0px 0px 0px 0px;
+  margin-left: 0;
 }
 
 /* BUTTONS */
@@ -134,5 +213,85 @@ button {
   color: #fff;
   border: none;
   cursor: pointer;
+}
+
+button:hover,
+input[type=submit]:hover {
+  background-color: rgb(63, 3, 123);
+  color: rgba(255, 255, 255, 1);
+}
+
+input[type=submit] {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgb(30, 2, 61);
+  border: none;
+  padding: 8px;
+}
+
+
+/* HOME PAGE */
+
+#home-page {
+  margin:40px;
+}
+
+.image-container {
+  position: relative;
+  margin-left: 40vmin;
+}
+
+.image-container img {
+  width: auto;
+  height: 60vmin;
+  display: block;
+}
+
+h1 {
+  color: rgb(30, 2, 61);
+}
+
+p {
+  color: #333;
+  line-height: 1.6;
+}
+
+.featured-meetings {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.featured-meeting {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30%;
+}
+
+#home-search {
+  margin-left: 40px;
+}
+
+.search-form {
+  margin-top: 30px;
+  text-align: left;
+}
+
+/* RESOURCES PAGE */
+
+.literature-list {
+  margin-top: 30px;
+}
+
+.literature-link {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
