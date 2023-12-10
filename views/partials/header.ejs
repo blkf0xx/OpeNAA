@@ -10,13 +10,14 @@
 </head>
 <body>
   <nav>
-    <a href="/" <%- title === 'Home' ? 'class="active"' : '' %>>HOME</a>
+    <a href="/" <%- title === 'Home' ? 'class="active"' : '' %>>OpeNAA</a>
     <a href="/meetings" <%- title === 'All Meetings' ? 'class="active"' : '' %>>ALL MEETINGS</a>
     <% if (user) { %>
     <a href="/meetings/new" <%- title === 'Add Meetings' ? 'class="active"' : '' %>>ADD A MEETING</a>
-    <a href="/logout">LOG OUT</a>
+    <a href="/resources" <%- title === 'Resources' ? 'class="active"' : '' %>>RESOURCES</a>
+    <a class="logout" href="/logout">LOG OUT</a>
     <% } else { %>
-      <a href="/auth/google" class="login">SIGN IN</a>
+    <a href="/auth/google" class="login">SIGN IN</a>
     <% } %>
   </nav>
   <main>
