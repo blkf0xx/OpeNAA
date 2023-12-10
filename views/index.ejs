@@ -1,5 +1,35 @@
 <%- include('./partials/header') %>
-
-<h2>Home</h2>
-
+<section id="home-page">
+    <h1>Welcome to the OpeNAA Meeting Tracker</h1>
+    <p>
+      Log-in or create an account to add and keep track of the informatoin for your favorite AA or NA meetings. 
+      <br>Or, scroll through the meetings list that others have contributed to find meetings near you. Search for meetings, add new meetings, and learn more about us.
+    </p>
+  
+    <div class="featured-meetings">
+      <div class="featured-meeting">
+        <h2><a href="/meetings">All Meetings</a></h2>
+        <p>Search through the list of community contributed meetings.</p>
+      </div>
+  
+      <div class="featured-meeting">
+        <h2><a href="/meetings/new">Add a Meeting</a></h2>
+        <p>Log-in or create an account to contribute your own favorite meetings.</p>
+      </div>
+  
+      <div class="featured-meeting">
+        <h2><a href="/resources">Find Literature</a></h2>
+        <p>Scroll through a list of free AA and NA literature.</p>
+      </div>
+    </div>
+  
+    <div class="search-form">
+      <h2>Find a Meeting Near You</h2>
+      <form id="home-search" action="#" method="GET">
+        <label for="search-location">Location:</label>
+        <input type="text" id="search-location" name="search-location" placeholder="Enter your location">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+</section>
 <%- include('./partials/footer') %>
