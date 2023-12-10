@@ -9,6 +9,7 @@ body {
 h3 {
   text-align: center;
   margin-bottom: 30px;
+  color: rgb(30, 2, 61);
 }
 
 a {
@@ -163,14 +164,6 @@ textarea {
   margin: 10px 0 0 0;
 }
 
-#comments-section {
-  width: 69%;
-  border-top: 1px solid grey;
-  text-align: center;
-  margin: 0 auto;
-  padding-top: 10px;
-}
-
 .grey-text {
   color: rgba(0, 0, 0, 0.7)
 }
@@ -182,6 +175,16 @@ textarea {
   display: flex;
   position: absolute;
   font-size: 14px;
+  margin-top:15px;
+}
+
+#comments-section {
+  width: 69%;
+  border-top: 1px solid grey;
+  text-align: center;
+  margin: 0 auto;
+  margin-top:30px;
+  padding-top: 10px;
 }
 
 ul {
@@ -246,7 +249,7 @@ input[type=submit] {
   display: block;
 }
 
-h1 {
+h1, h2 {
   color: rgb(30, 2, 61);
 }
 
