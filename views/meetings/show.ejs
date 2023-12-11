@@ -17,17 +17,107 @@
     </div>
 
     <% if (user) { %>
-    <a href="/meetings/<%= meetings._id %>/edit"><button id="update-meeting-btn">Update Meeting</button></a>
+    <!-- <a href="/meetings/<%= meetings._id %>/edit"><button id="update-meeting-btn">Update Meeting</button></a> -->
+    <button id="update-meeting-btn">Update Meeting</button>
     <form id="remove-mtg-form" action="/meetings/<%= meetings._id %>?_method=DELETE" method="POST">
         <button id="remove-mtg-btn" type="submit">Remove Meeting</button>
     </form>
     <% } %>
+
+
+
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <!-- Form for updating information -->
+          <form id="updateForm" action="/meetings/<%= meetings._id %>?_method=PUT" method="POST">
+            <!-- Form fields -->
+            <label>Meeting Name:</label>
+        <input type="text" name="mtgName" value="<%= meetings.mtgName %>">
+
+        <label>Organization:</label>
+        <input type="text" name="organization" value="<%= meetings.organization %>">
+
+        <label>Weekday:</label>
+        <select name="weekday" value="<%= meetings.weekday %>">
+            <!-- <option>-- Select one --</option> -->
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
+        
+        <label>Time:</label>
+        <input type="time" name="time" value="<%= meetings.time %>">
+       
+        <label>Meeting Length:</label>
+        <input type="Number" name="length" value="<%= meetings.length %>">
+
+        <label for="format">Format:</label>
+        <select id="format" name="format">
+            <option>-- Select one --</option>
+            <option value="In Person">In Person</option>
+            <option value="Online Only">Online Only</option>
+            <option value="Hybrid">Hybrid</option>
+        </select>
+
+        <div id="dependent-inputs">
+            <label>Meeting URL:</label>
+            <input type="text" name="link" value="<%= meetings.link %>">
+
+            <label>Meeting ID:</label>
+            <input type="text" name="mtgId" value="<%= meetings.mtgId %>">
+
+            <label>Meeting Passcode:</label>
+            <input type="text" name="mtgPasscode" value="<%= meetings.mtgPasscode %>">
+        </div>
+        <div id="location">
+            <label>Meeting Location:</label>
+            <input type="text" name="address" value="<%= meetings.address %>">
+        </div>
+            <input type="submit" value="Update">
+          </form>
+        </div>
+      </div>
+
+
+      <script>
+        // JavaScript to handle modal interactions
+        document.addEventListener('DOMContentLoaded', function() {
+          const modal = document.getElementById('updateModal');
+          const openModalBtn = document.getElementById('update-meeting-btn');
+          const closeBtn = document.getElementsByClassName('close')[0];
+      
+          // Open modal when the button is clicked
+          openModalBtn.onclick = function() {
+            modal.style.display = 'block';
+          }
+      
+          // Close modal when the 'x' button is clicked
+          closeBtn.onclick = function() {
+            modal.style.display = 'none';
+          }
+      
+          // Close modal when clicking outside the modal
+          window.onclick = function(event) {
+            if (event.target === modal) {
+              modal.style.display = 'none';
+            }
+          }
+        });
+      </script>
+
+
+
 </section>
 
 <section id="map">
     <iframe
   width="600"
-  height="430"
+  height="400"
   frameborder="0" style="border:0"
   referrerpolicy="no-referrer-when-downgrade"
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCO0Prya2KV8-B8-A3X1h_68WbS1atHKkM&q=<%= meetings.address %>>"
@@ -35,9 +125,9 @@
 </iframe>
 </section>
 </div>
+
 <section  id="comments-section">
-<!-- </section>
-<section> -->
+
 <div id="comment-wrapper">
     <% if (meetings.comments.length) { %>
         <% meetings.comments.forEach(c=> { %>
