@@ -3,7 +3,6 @@
 <section id="meeting-info">
     <a href="/meetings"><< Back to meetings</a>
     <h2><%= meetings.mtgName %></h2>
-    <!-- <div>Meeting Name: <%= meetings.mtgName %></div>    -->
     <div><span class="grey-text">Organization:</span> <%= meetings.organization %></div>   
     <div><span class="grey-text">Weekday:</span> <%= meetings.weekday %></div>
     <div><span class="grey-text">Time:</span> <%= meetings.time %></div>  
@@ -17,7 +16,6 @@
     </div>
 
     <% if (user) { %>
-    <!-- <a href="/meetings/<%= meetings._id %>/edit"><button id="update-meeting-btn">Update Meeting</button></a> -->
     <button id="update-meeting-btn">Update Meeting</button>
     <form id="remove-mtg-form" action="/meetings/<%= meetings._id %>?_method=DELETE" method="POST">
         <button id="remove-mtg-btn" type="submit">Remove Meeting</button>
@@ -40,7 +38,6 @@
 
         <label>Weekday:</label>
         <select name="weekday" value="<%= meetings.weekday %>">
-            <!-- <option>-- Select one --</option> -->
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
