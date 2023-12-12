@@ -7,6 +7,7 @@ A web app to add and keep track of your favoite AA / NA meetings and find recove
 - Express.js
 - JavaScript
 - Mongoose / MongoDB
+- Passport.js
 - HTML / CSS
 
 # Screenshots:
