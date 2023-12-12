@@ -18,24 +18,17 @@ function showFields() {
     zoomInfoDiv.style.display = mtgFormatDiv === 'Format: In Person' ? 'none' : 'block'
 }
 
-
 // JavaScript to handle modal interactions
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('updateModal')
     const openModalBtn = document.getElementById('update-meeting-btn')
     const closeBtn = document.getElementsByClassName('close')[0]
-
-
     openModalBtn.onclick = function () {
         modal.style.display = 'block'
     }
-
-
     closeBtn.onclick = function () {
         modal.style.display = 'none'
     }
-
-
     window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = 'none'
