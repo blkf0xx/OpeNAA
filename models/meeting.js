@@ -22,10 +22,6 @@ const meetingSchema = new Schema({
   mtgId: String,
   mtgPasscode: String,
   address: String,
-  // userAttends: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Attending'
-  // }],
   comments: [commentSchema]
 }, { timestamps: true })
 
